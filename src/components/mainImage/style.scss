@@ -1,18 +1,10 @@
 .h2 {
-  text-overflow-ellipsis: overflow;
-  overflow: hidden;
-  display: block;
-  font-size: 1.3rem;
-  margin: 10px
-}
-
-.h6 {
   font-size: 1rem;
   margin: 15px
 }
 
 .selected-image {
-  margin-bottom: 20px;
+  margin: 20px 0;
 
   img {
     width: 100%;

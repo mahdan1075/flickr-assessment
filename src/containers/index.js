@@ -14,7 +14,7 @@ class App extends Component {
   }
 
  componentDidMount() {
-    this.props.dispatch(searchMediaAction('British'));
+    this.props.dispatch(searchMediaAction('Development'));
   }
 
   handleSelectImage(selectedImage) {
@@ -33,18 +33,24 @@ class App extends Component {
     const { images, selectedImage } = this.props;
     return (
       <div className="container">
-        {images && selectedImage? <div>
-          <input
-            type="text"
-            ref={ref => (this.query = ref)}
-            className="title"
-          />
-          <button
-            type="submit"
-            onClick={this.handleSearch}
-          >
-            <Icon name="search" /> Search Library
-          </button>
+        <h1 className="h1">Gallery</h1>
+        {images && selectedImage?
+        <div>
+          <div className="search">
+            <input
+              type="text"
+              ref={ref => (this.query = ref)}
+              className="search_box"
+              placeholder="search Flickr"
+            />
+            <button
+              type="submit"
+              onClick={this.handleSearch}
+              className="search_button"
+            >
+              <Icon name="search" /> Search
+            </button>
+          </div>
           <div>
             <MainImage selectedImage={selectedImage} />
             <Thumbnails
