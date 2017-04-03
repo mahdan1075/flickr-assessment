@@ -1,7 +1,10 @@
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import {Icon} from 'react-fa'
 import { selectImageAction, searchMediaAction } from '../actions/mediaActions';
-import Gallery from '../components/index';
+import MainImage from '../components/mainImage/index';
+import Thumbnails from '../components/thumbnails/index';
+import './style.css';
 
 class App extends Component {
   constructor() {
@@ -11,7 +14,7 @@ class App extends Component {
   }
 
  componentDidMount() {
-    this.props.dispatch(searchMediaAction('Pearl'));
+    this.props.dispatch(searchMediaAction('British'));
   }
 
   handleSelectImage(selectedImage) {
@@ -29,21 +32,23 @@ class App extends Component {
   render() {
     const { images, selectedImage } = this.props;
     return (
-      <div>
+      <div className="container">
         {images && selectedImage? <div>
           <input
             type="text"
             ref={ref => (this.query = ref)}
+            className="title"
           />
-          <input
+          <button
             type="submit"
-            value="Search Library"
             onClick={this.handleSearch}
-          />
+          >
+            <Icon name="search" /> Search Library
+          </button>
           <div>
-            <Gallery
+            <MainImage selectedImage={selectedImage} />
+            <Thumbnails
               images={images}
-              selectedImage={selectedImage}
               onHandleSelectImage={this.handleSelectImage}
             />
           </div>

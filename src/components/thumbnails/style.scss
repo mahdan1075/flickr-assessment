@@ -1,0 +1,11 @@
+.thumbnail {
+  display: flex;
+  flex-wrap: wrap;
+
+  img {
+    width: 70px;
+    height: 70px;
+    padding: 1px;
+    border: 1px solid grey;
+  }
+}

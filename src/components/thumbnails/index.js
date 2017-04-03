@@ -1,15 +1,9 @@
 import React, { PropTypes } from 'react';
+import './style.css';
 
-const Gallery = ({ images, onHandleSelectImage, selectedImage }) => (
+const Thumbnails = ({ images, onHandleSelectImage }) => (
   <div>
-    <h2> Images </h2>
-    <div>
-      <div key={selectedImage.id}>
-        <h6>{selectedImage.title}</h6>
-        <img src={selectedImage.mediaUrl} alt={selectedImage.title} />
-      </div>
-    </div>
-    <div>
+    <div className="thumbnail">
       {images.map((image, i) => (
         <div key={i} onClick={onHandleSelectImage.bind(this, image)}>
           <img src={image.mediaUrl} alt={image.title} />
@@ -20,10 +14,9 @@ const Gallery = ({ images, onHandleSelectImage, selectedImage }) => (
 );
 
 // Define PropTypes
-Gallery.propTypes = {
+Thumbnails.propTypes = {
   images: PropTypes.array.isRequired,
-  selectedImage: PropTypes.object,
   onHandleSelectImage: PropTypes.func.isRequired
 };
 
-export default Gallery;
+export default Thumbnails;
