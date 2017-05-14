@@ -14,15 +14,15 @@ class App extends Component {
   }
 
  componentDidMount() {
-    this.props.dispatch(searchMediaAction('Development'));
+    this.props.dispatch(searchMediaAction('shopping'));
   }
 
   handleSelectImage(selectedImage) {
     this.props.dispatch(selectImageAction(selectedImage));
   }
 
-  handleSearch(event) {
-    event.preventDefault();
+  handleSearch(e) {
+    e.preventDefault();
     if (this.query !== null) {
       this.props.dispatch(searchMediaAction(this.query.value));
       this.query.value = '';
@@ -37,19 +37,20 @@ class App extends Component {
         {images && selectedImage?
         <div>
           <div className="search">
-            <input
-              type="text"
-              ref={ref => (this.query = ref)}
-              className="search_box"
-              placeholder="search Flickr"
-            />
-            <button
-              type="submit"
-              onClick={this.handleSearch}
-              className="search_button"
-            >
-              <Icon name="search" /> Search
-            </button>
+            <form onSubmit={this.handleSearch}>
+              <input
+                type="text"
+                ref={ref => (this.query = ref)}
+                className="search_box"
+                placeholder="search Flickr (e.g. shopping)"
+              />
+              <button
+                type="submit"
+                className="search_button"
+              >
+                <Icon name="search" /> Search
+              </button>
+            </form>
           </div>
           <div>
             <MainImage selectedImage={selectedImage} />
